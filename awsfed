@@ -1,0 +1,22 @@
+#!/usr/bin/expect -f
+set AWS_ACCOUNT [lindex $argv 0]
+set PROFILE [lindex $argv 1]
+set TTL [lindex $argv 2]
+
+spawn sh /Users/ehuang02/work/yahoo/oath-aws-developer-tools/run.sh -c awsfed -b true -a $AWS_ACCOUNT -n -p $PROFILE -d $TTL
+expect "Okta Shortid: "
+send "ehuang02\r"
+expect "Password: "
+send "$env(OKTA)\r"
+expect {
+    -re "\\\[1\\\. Ios \\\(\\\+Xxx Xxx Xxx 618\\\)"
+    {
+        send "2\r"
+    }
+
+    -re "\\\[1\\\. Ios \\\(\\\+Xxx Xxx Xxx 186\\\)"
+    {
+	    send "1\r"
+    }
+}
+interact

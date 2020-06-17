@@ -1,0 +1,13 @@
+#!/usr/bin/expect -f
+set AWS_ACCOUNT [lindex $argv 0]
+if { [string compare $AWS_ACCOUNT ""] == 0 } {
+    set AWS_ACCOUNT "vpn-1-gci.corp.tw1.yahoo.com/GeneralHybrid"
+}
+spawn vpn con $AWS_ACCOUNT
+expect "Username: \[ehuang02\]"
+send "\r"
+expect "Password:"
+send "$env(OKTA)\r"
+expect "Second Password:"
+send "push\r"
+interact

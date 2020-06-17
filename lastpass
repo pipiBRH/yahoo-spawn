@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+spawn lpass show okta --name
+expect {
+    "Master Password"
+    {
+        send "$env(LASTPASS)\r"
+    }
+
+    "okta"
+    {
+	    send ""
+    }
+}
+interact
