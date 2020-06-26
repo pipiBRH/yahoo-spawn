@@ -1,5 +1,5 @@
 #!/usr/bin/expect -f
-set AWS_ACCOUNT [lindex $argv 0]
+set LOCATION [lindex $argv 0]
 if { [string compare $LOCATION ""] == 0 } {
     set LOCATION "Taiwan"
 }
