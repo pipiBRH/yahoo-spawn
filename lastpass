@@ -1,14 +1,5 @@
 #!/usr/bin/expect -f
-spawn lpass show okta --name
-expect {
-    "Master Password"
-    {
-        send "$env(LASTPASS)\r"
-    }
-
-    "okta"
-    {
-	    send ""
-    }
-}
+spawn lpass login --trust ethan.huang@verizonmedia.com
+expect "Master Password" 
+send "$env(LASTPASS)\r"
 interact
