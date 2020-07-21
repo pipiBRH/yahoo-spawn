@@ -1,9 +1,9 @@
 #!/usr/bin/expect -f
-set AWS_ACCOUNT [lindex $argv 0]
-if { [string compare $AWS_ACCOUNT ""] == 0 } {
-    set AWS_ACCOUNT "vpn-1-gci.corp.tw1.yahoo.com/GeneralHybrid"
+set LOCATION [lindex $argv 0]
+if { [string compare $LOCATION ""] == 0 } {
+    set LOCATION "Taiwan"
 }
-spawn vpn con $AWS_ACCOUNT
+spawn vpn con $LOCATION
 expect "Username: \[ehuang02\]"
 send "\r"
 expect "Password:"
